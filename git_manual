@@ -1,0 +1,10 @@
+
+git rm --cached abcd.txt    // 删除已经git add 添加的abcd.txt文件
+git reset HEAD^    // 回退到上一个git commit
+git rev-list --all --objects    // 显示所有文件
+git checkout -b fix-issue origin/main    // 基于main分支创建一个fix-issue分支
+git stash -u -m "stash current working file"    // 保存当前状态
+git stash pop    // 弹出当前状态
+git pull --rebase    // 拉取远程仓库，并自动合并
+git mergetool && git rebase --continue    // 手动解决冲突并继续合并
+
