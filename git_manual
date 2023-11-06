@@ -2,9 +2,32 @@
 git rm --cached abcd.txt    // 删除已经git add 添加的abcd.txt文件
 git reset HEAD^    // 回退到上一个git commit
 git rev-list --all --objects    // 显示所有文件
+
+// git stash
 git checkout -b fix-issue origin/main    // 基于main分支创建一个fix-issue分支
 git stash -u -m "stash current working file"    // 保存当前状态
 git stash pop    // 弹出当前状态
 git pull --rebase    // 拉取远程仓库，并自动合并
 git mergetool && git rebase --continue    // 手动解决冲突并继续合并
 
+// git worktree
+git worktree add --track -b fix ../fix origin/main    // 创建一个新的工作区../fix，同时创建并切换到新分支fix
+pushd ../fix    // 将../fix设为当前工作目录
+popd    // 弹出当前目录
+git worktree list
+git worktree remove ../fix    // 删除../fix工作区
+git branch -d fix    // 删除fix分支
+
+// git custom
+git config --global init.defaultbranch=main
+git config --global alias.st 'status -s'
+git config --global alias.ci 'commit'
+git config --global alias.co checkout
+git config --global alias.br 'branch -vv'
+git config --global alias.cl 'clean -fd'
+git config --global alias.df diff
+git config --global alias.lg 'log --name-status'
+git config --global core.editer nvim
+git config --global core.pager 'less -x1,5'
+git config --global pull.rebase true
+git config --global credential.helper cache
